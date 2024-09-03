@@ -1,0 +1,42 @@
+### app settings
+APP_NAME="Zaion.AI Agent Assist API/UI. ver 1.0.0.0"
+DESC="Web UI with websocket and REST endpoints to retrieve the summary from database"
+VERSION="1.0.0.1"
+
+### uvicorn settings
+HOST=0.0.0.0    ### API binding IP
+PORT=8888       ### API binding port
+LOG_LEVEL="info"
+NO_OF_WORKERS=1
+CHUNCK_SIZE=8000
+### SSL configuration settings
+SSL_ENABLED="false"
+SSL_CERT_FILE=/config/ssl/certs/ssl_cert.pem
+SSL_KEY_FILE=/config/ssl/certs/ssl_key.pem
+SSL_CA_CERT_FILE=/config/ssl/certs/ssl_ca_cert.pem
+
+## set the CORS sites (* means all)
+CORS_ORIGINS="http://localhost:8000,http://localhost:5173,http://10.9.0.210:8000,http://10.9.0.210:5173,http://agent-assist-dev.zaion.ai,https://agent-assist-dev.zaion.ai"
+DATABASE_NAME="agent-assist4"
+
+#/config/ssl/certs/zaion.pem
+CertificateKeyFile=/config/ssl/certs/zaion.pem
+CertificateCAFile=/config/ssl/MasterCA.pem
+CertKeyFilePwd=
+
+#Application
+# App_dest_folder= /usr/local/Apps
+# Temp_dest_folder = /tmp/extracted
+APP_DEST_FOLDER = /usr/local/agent-assist/alpine
+TEMP_DEST_FOLDER  = /usr/local/agent-assist/alpine
+
+
+# Cache Config
+APP_CACHE_SIZE = 60 
+AUTH_TOKEN_EXPIRE_MINUTES = 30
+CACHE_MAX_SIZE = 100
+
+# Database config
+ENCRYPTION_KEY = "encryption_key"
+
+

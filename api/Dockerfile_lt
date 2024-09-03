@@ -1,0 +1,24 @@
+FROM alpine:3.14
+LABEL version="1.0"
+LABEL maintainer="team@zaion.ai"
+
+FROM python:3.9-alpine as base
+
+ENV PYTHONUNBUFFERED=1
+
+RUN apk add --update --no-cache nano sqlite-dev
+
+WORKDIR /usr/local/agassist
+
+COPY setup/requirements.txt .
+RUN pip3 install --no-cache --upgrade pip setuptools \
+    && pip3 install -r requirements.txt
+
+COPY bin/main.py ./bin/
+COPY config ./config/
+
+RUN mkdir logs
+
+EXPOSE 9000
+
+CMD ["uvicorn", "bin.main:app", "--host", "0.0.0.0", "--port", "9000"]
